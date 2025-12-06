@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest app",
-    "create-db": "psql -f ./database/create-database.sql", 
-    "seed": "node ./database/seed-run.js"
+    "create-db": "psql -f ./database/create-database.sql",
+    "seed": "node ./database/seed-run.js", 
+    "dev": "nodemon listen.js"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +15,11 @@
   "type": "commonjs",
   "dependencies": {
     "dotenv": "^17.2.3",
+    "express": "^5.2.1",
     "pg": "^8.16.3",
     "pg-format": "^1.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }

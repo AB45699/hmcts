@@ -4,8 +4,18 @@ const db = require("../database/connection.js");
 const seed = require("../database/seed.js");
 const testCasesData = require("../database/data/test-case-data.json");
 
+let testPostCase; 
+
 beforeEach( async ()=> {
     await seed(testCasesData);
+
+    testPostCase = {
+        case_number: "Case 3", 
+        case_title: "Case 3 title", 
+        case_description: "Case 3 description", 
+        case_status: "Completed", 
+        due: "2025-03-20 17:45:00"
+    }
 })
 
 afterAll(()=> {
@@ -60,25 +70,9 @@ describe("app", ()=> {
     });
     describe("POST /api/cases", ()=> {
         test("returns a status code of 201", async () => {
-            const testPostCase = {
-                case_number: "Case 3", 
-                case_title: "Case 3 title", 
-                case_description: "Case 3 description", 
-                case_status: "Completed", 
-                due: "2025-03-20 17:45:00"
-            };
-
             await request(app).post("/api/cases").send(testPostCase).expect(201);
         });
         test("returns a newly inserted case, with a new case_id, and case number, title, description, status and due keys", async ()=> {
-            const testPostCase = {
-                case_number: "Case 3", 
-                case_title: "Case 3 title", 
-                case_description: "Case 3 description", 
-                case_status: "Completed", 
-                due: "2025-03-20 17:45:00"
-            };
-
             const {body} = await request(app).post("/api/cases").send(testPostCase).expect(201);
 
             expect(body.postedCase.case_id).toBe(3); 
@@ -90,32 +84,18 @@ describe("app", ()=> {
 
         });
         test("cases should post when description key (optional) is an empty string", async ()=> {
-            const testPostCase = {
-                case_number: "Case 3", 
-                case_title: "Case 3 title", 
-                case_description: "", 
-                case_status: "Completed", 
-                due: "2025-03-20 17:45:00"
-            };
-            const {body} = await request(app).post("/api/cases").send(testPostCase).expect(201);
+            const noDescriptionCase = {...testPostCase, case_description: ""}
+            const {body} = await request(app).post("/api/cases").send(noDescriptionCase).expect(201);
             
             expect(body.postedCase.case_description).toBe("");
         });
     });
     describe("POST error handling", ()=>{
-        const validTestCase = {
-            case_number: "Case 3", 
-            case_title: "Case 3 title", 
-            case_description: "Case 3 description", 
-            case_status: "Completed", 
-            due: "2025-03-20 17:45:00"
-        };
-
         test.each([
-            ["case_number", {...validTestCase, case_number: ""}], 
-            ["case_title", {...validTestCase, case_title: ""}],
-            ["case_status", {...validTestCase, case_status: ""}],
-            ["due", {...validTestCase, due: ""}]
+            ["case_number", {...testPostCase, case_number: ""}], 
+            ["case_title", {...testPostCase, case_title: ""}],
+            ["case_status", {...testPostCase, case_status: ""}],
+            ["due", {...testPostCase, due: ""}]
         ])("if the %s key is an empty string, a 400 status code and error message is returned", async (key, invalidTestCase) => {
             const {body} = await request(app).post("/api/cases").send(invalidTestCase).expect(400);
 

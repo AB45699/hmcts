@@ -88,6 +88,18 @@ describe("app", ()=> {
             expect(body.postedCase.case_status).toBe("Completed");
             expect(body.postedCase.due).toBe("2025-03-20T17:45:00.000Z");
 
+        });
+        test("cases should post when description field (optional) is an empty string", async ()=> {
+            const testPostCase = {
+                case_number: "Case 3", 
+                case_title: "Case 3 title", 
+                case_description: "", 
+                case_status: "Completed", 
+                due: "2025-03-20 17:45:00"
+            };
+            const {body} = await request(app).post("/api/cases").send(testPostCase).expect(201);
+            
+            expect(body.postedCase.case_description).toBe("");
         })
     })
 })

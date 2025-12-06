@@ -7,6 +7,11 @@ afterAll(()=> {
 });
 
 describe("app", ()=> {
+    test("invalid path returns a 404 status code and error message", async ()=> {
+        const {body} = await request(app).get("/api/invalid").expect(404);
+
+        expect(body.msg).toBe("Path not found");
+    })
     describe("GET /api/cases", ()=> {
         test("returns a status code of 200", async ()=> {
             await request(app).get("/api/cases").expect(200);

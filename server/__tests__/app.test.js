@@ -1,6 +1,12 @@
 const request = require("supertest"); 
 const app = require("../app.js"); 
 const db = require("../database/connection.js");
+const seed = require("../database/seed.js");
+const testCasesData = require("../database/data/test-case-data.json");
+
+beforeEach( async ()=> {
+    await seed(testCasesData);
+})
 
 afterAll(()=> {
     db.end();
@@ -62,7 +68,26 @@ describe("app", ()=> {
                 due: "2025-03-20 17:45:00"
             };
 
+            await request(app).post("/api/cases").send(testPostCase).expect(201);
+        });
+        test("returns a newly inserted case, with a new case_id, and case number, title, description, status and due keys", async ()=> {
+            const testPostCase = {
+                case_number: "Case 3", 
+                case_title: "Case 3 title", 
+                case_description: "Case 3 description", 
+                case_status: "Completed", 
+                due: "2025-03-20 17:45:00"
+            };
+
             const {body} = await request(app).post("/api/cases").send(testPostCase).expect(201);
+
+            expect(body.postedCase.case_id).toBe(3); 
+            expect(body.postedCase.case_number).toBe("Case 3"); 
+            expect(body.postedCase.case_title).toBe("Case 3 title"); 
+            expect(body.postedCase.case_description).toBe("Case 3 description");
+            expect(body.postedCase.case_status).toBe("Completed");
+            expect(body.postedCase.due).toBe("2025-03-20T17:45:00.000Z");
+
         })
     })
 })

@@ -1,0 +1,17 @@
+[ 
+    { 
+        "case_number": "Case 1", 
+        "title": "Case 1 title", 
+        "description": "Description for Case 1", 
+        "status": "Paused", 
+        "due": "2025-02-20 15:45:00"
+    }, 
+
+    {
+        "case_number": "Case 2", 
+        "title": "Case 2 title", 
+        "description": "Description for Case 2", 
+        "status": "Ongoing", 
+        "due": "2025-09-10 16:00:00"
+    }
+]

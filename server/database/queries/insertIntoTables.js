@@ -1,4 +1,4 @@
-const db = require("../connection"); 
+const db = require("../connection.js"); 
 const format = require("pg-format"); 
 
 async function insertIntoTables(testCasesData) {

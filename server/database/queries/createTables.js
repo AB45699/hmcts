@@ -8,7 +8,7 @@ async function createTables() {
         case_description TEXT, 
         case_status VARCHAR NOT NULL, 
         due TIMESTAMP NOT NULL
-        );`)
+        );`);
 }; 
 
 module.exports = createTables;

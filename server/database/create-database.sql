@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS hmcts_cases;
+DROP DATABASE IF EXISTS hmcts_cases_test;
 
-CREATE DATABASE hmcts_cases;
+CREATE DATABASE hmcts_cases_test;

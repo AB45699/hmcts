@@ -5,3 +5,7 @@ exports.getAllCases = async (req, res, next) => {
    
     res.status(200).send({cases})
 };
+
+exports.postCase = async (req, res, next) => {
+    res.status(201).send(); 
+}

@@ -51,5 +51,18 @@ describe("app", ()=> {
 
             expect(body.cases).toBeSortedBy("case_id", {descending: true});
         })
+    });
+    describe("POST /api/cases", ()=> {
+        test("returns a status code of 201", async () => {
+            const testPostCase = {
+                case_number: "Case 3", 
+                case_title: "Case 3 title", 
+                case_description: "Case 3 description", 
+                case_status: "Completed", 
+                due: "2025-03-20 17:45:00"
+            };
+
+            const {body} = await request(app).post("/api/cases").send(testPostCase).expect(201);
+        })
     })
 })

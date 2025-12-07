@@ -7,7 +7,8 @@
     "test": "jest app",
     "create-db": "psql -f ./database/create-database.sql",
     "seed": "node ./database/seed-run.js",
-    "dev": "nodemon listen.js"
+    "dev": "nodemon listen.js",
+    "test-utils": "jest utility"
   },
   "keywords": [],
   "author": "",

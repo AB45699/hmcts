@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'; 
 import { fetchAllCases } from '../../api';
 import CaseCard from './CaseCard.jsx';
+import AddTask from './AddTask.jsx';
 
 function CasesGrid() {
     const [cases, setCases] = useState([]); 
@@ -32,10 +33,13 @@ function CasesGrid() {
     };
 
     return (
-        <section className="case-card-container">
-        {cases.map((fetchedCase) => {
-            return <CaseCard key={fetchedCase.case_id} fetchedCase={fetchedCase}/>
-        })}
+        <section className="wrapper">
+            <AddTask />
+                <div className="case-card-container">
+                    {cases.map((fetchedCase) => {
+                        return <CaseCard key={fetchedCase.case_id} fetchedCase={fetchedCase}/>
+                    })}
+                </div>
         </section>
     )
 }

@@ -1,11 +1,9 @@
+import CasesGrid from "./components/CasesGrid.jsx"; 
 
 function App() {
- 
 
   return (
-    <>
-      <h2>hello</h2>
-    </>
+    <CasesGrid />
   )
 }
 

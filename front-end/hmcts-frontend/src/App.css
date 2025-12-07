@@ -4,6 +4,10 @@ body {
   background: #746e6e80;
 }
 
+.wrapper {
+  margin-top: 50px;
+}
+
 .case-card-container {
   display: grid; 
   grid-template-columns: 1fr; 
@@ -42,11 +46,12 @@ span {
 }
 
 .add-task-button {
-  background-color: rgb(58, 105, 177);
+  background-color: rgb(84, 136, 214);
   border-style: solid;
   border-color: rgb(18, 18, 95);
   border-radius: 15px;
   height: 35px;
   width: 100px;
   font-size: 17px;
+  margin-left: 10px;
 }

@@ -4,16 +4,31 @@ import CaseCard from './CaseCard.jsx';
 
 function CasesGrid() {
     const [cases, setCases] = useState([]); 
+    const [isLoading, setIsLoading] = useState(true); 
+    const [hasErrored, setHasErrored] = useState(false); 
 
     const fetchCases = async () => {
-        const fetchedCases = await fetchAllCases();
+        try {
+            const fetchedCases = await fetchAllCases();
 
-        setCases(fetchedCases)
-    }
+            setCases(fetchedCases);
+            setIsLoading(false); 
+        } catch (err) {
+            setHasErrored(err); 
+            setIsLoading(false);
+        }
+        
+    };
 
     useEffect(()=>{
         fetchCases();
     },[])
+
+    if (isLoading) {
+        return (
+            <p>...loading</p>
+        )
+    };
 
     return (
         <>

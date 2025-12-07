@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import { fetchAllCases } from '../../api';
 import CaseCard from './CaseCard.jsx';
 import AddTask from './AddTask.jsx';
+import '../cases.css';
 
 function CasesGrid() {
     const [cases, setCases] = useState([]); 

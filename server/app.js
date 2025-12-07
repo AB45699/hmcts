@@ -1,8 +1,11 @@
 const express = require("express"); 
 const {getAllCases, postCase} = require("./controllers/cases.js");
 const {handlePathNotFound, handleCustomErrors, handleServerErrors} = require("./controllers/errors.js");
+const cors = require("cors");
 
 const app = express(); 
+
+app.use(cors());
 
 app.use(express.json());
 

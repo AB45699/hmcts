@@ -1,0 +1,35 @@
+.body {
+  place-items: center;
+}
+
+.case-card-container {
+  display: grid; 
+  grid-template-columns: 1fr; 
+  border-style: solid;
+  border-color: red; 
+  row-gap: 10px; 
+  place-items: center;
+}
+
+@media (min-width: 600px) {
+  .case-card-container {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 10px; 
+    column-gap: 10px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .case-card-container {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 10px; 
+    column-gap: 10px;
+  }
+}
+
+.case-card {
+  width: 120px;
+  height: 180px; 
+  border-style: solid; 
+  border-color: blue;
+}

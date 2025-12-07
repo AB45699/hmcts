@@ -1,4 +1,5 @@
 import CasesGrid from "./components/CasesGrid.jsx"; 
+import './App.css';
 
 function App() {
 

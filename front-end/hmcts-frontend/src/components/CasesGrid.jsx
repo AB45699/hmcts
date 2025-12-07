@@ -31,11 +31,11 @@ function CasesGrid() {
     };
 
     return (
-        <>
+        <section className="case-card-container">
         {cases.map((fetchedCase) => {
             return <CaseCard key={fetchedCase.case_id} fetchedCase={fetchedCase}/>
         })}
-        </>
+        </section>
     )
 }
 

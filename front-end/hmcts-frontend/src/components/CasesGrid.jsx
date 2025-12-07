@@ -13,6 +13,7 @@ function CasesGrid() {
 
             setCases(fetchedCases);
             setIsLoading(false); 
+            
         } catch (err) {
             setHasErrored(err); 
             setIsLoading(false);

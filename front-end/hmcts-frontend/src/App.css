@@ -1,13 +1,14 @@
-.body {
+body {
   place-items: center;
+  font-family: Helvetica;
+  background-color: #c1bdbd80;
 }
 
 .case-card-container {
   display: grid; 
   grid-template-columns: 1fr; 
-  border-style: solid;
-  border-color: red; 
   row-gap: 10px; 
+  padding: 10px;
   place-items: center;
 }
 
@@ -28,8 +29,14 @@
 }
 
 .case-card {
-  width: 120px;
-  height: 180px; 
+  padding: 10px;
+  border-radius: 15px;
+  background-color: rgb(186, 210, 200); 
   border-style: solid; 
-  border-color: blue;
+  border-color: rgb(5, 53, 22);
+  border-width: 3px;
+}
+
+span {
+  font-weight: bold;
 }

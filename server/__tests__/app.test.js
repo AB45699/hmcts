@@ -89,17 +89,29 @@ describe("app", ()=> {
             
             expect(body.postedCase.case_description).toBe("");
         });
-    });
-    describe("POST error handling", ()=>{
-        test.each([
-            ["case_number", {...testPostCase, case_number: ""}], 
-            ["case_title", {...testPostCase, case_title: ""}],
-            ["case_status", {...testPostCase, case_status: ""}],
-            ["due", {...testPostCase, due: ""}]
-        ])("if the %s key is an empty string, a 400 status code and error message is returned", async (key, invalidTestCase) => {
-            const {body} = await request(app).post("/api/cases").send(invalidTestCase).expect(400);
+        describe("POST error handling", ()=>{
+            test.each([
+                ["case_number", {...testPostCase, case_number: ""}], 
+                ["case_title", {...testPostCase, case_title: ""}],
+                ["case_status", {...testPostCase, case_status: ""}],
+                ["due", {...testPostCase, due: ""}]
+            ])("if the %s key is an empty string, a 400 status code and error message is returned", async (key, invalidTestCase) => {
+                const {body} = await request(app).post("/api/cases").send(invalidTestCase).expect(400);
 
-            expect(body.msg).toBe("Bad request");
+                expect(body.msg).toBe("Bad request");
+            });
+             test.each([
+                ["case_number", {...testPostCase, case_number: 123}], 
+                ["case_title", {...testPostCase, case_title: []}],
+                ["case_description", {...testPostCase, case_description: 456}],
+                ["case_status", {...testPostCase, case_status: {}}],
+                ["due", {...testPostCase, due: false}]
+            ])("if the %s key is not a string, a 400 status code and error message is returned", async (key, invalidTestCase) => {
+                const {body} = await request(app).post("/api/cases").send(invalidTestCase).expect(400);
+
+                expect(body.msg).toBe("Bad request");
+            });
         })
-    })
+    });
+   
 })

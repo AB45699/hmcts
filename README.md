@@ -40,7 +40,7 @@ A full-stack web application that allows users to create new tasks. The page dis
 1. To run the unit tests for the endpoints/server, navigate to: 
     <br>```cd hmcts/server```
     and run the command: 
-    <br>```npm t```
+    <br>```npm test```
 2. To run the unit tests for the backend utility functions, in the same folder, run: 
     <br>```npm run test-utils```
 

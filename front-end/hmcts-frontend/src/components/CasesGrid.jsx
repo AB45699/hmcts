@@ -35,7 +35,7 @@ function CasesGrid() {
 
     return (
         <section className="wrapper">
-            <AddTask cases={cases} setCases={setCases}/>
+            <AddTask setCases={setCases}/>
                 <div className="case-card-container">
                     {cases.map((fetchedCase) => {
                         return <CaseCard key={fetchedCase.case_id} fetchedCase={fetchedCase}/>

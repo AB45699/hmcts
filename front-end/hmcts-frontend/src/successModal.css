@@ -1,0 +1,13 @@
+.success-modal-content {
+    position: absolute;
+    top:0;
+    right: 0;
+    margin: 10px;
+    background: rgb(202, 200, 62);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border-style: solid; 
+    border-color: rgb(64, 60, 4);
+    font-weight: bold;
+}

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import '../modal.css';
 import { postCaseData } from '../../api';
 
-function FormModal( {setIsModalOpen, cases, setCases} ) {
+function FormModal( {setIsModalOpen, setCases, setIsSuccessModalOpen} ) {
     const modalRoot = document.getElementById("modal-root"); 
     const [formData, setFormData] = useState({
         case_number: "",
@@ -31,7 +31,8 @@ function FormModal( {setIsModalOpen, cases, setCases} ) {
             await postCaseData(newCase);
             setCases((currCases) => {
                 return [newCase, ...currCases]
-            })
+            });
+            setIsSuccessModalOpen(true);
         } catch (err) {
             throw err
         }
@@ -41,8 +42,7 @@ function FormModal( {setIsModalOpen, cases, setCases} ) {
         event.preventDefault();
         await postCase(formData);
         closeModal();
-
-    }
+    };
 
     return createPortal(
     <div className="modal-backdrop">

@@ -1,8 +1,10 @@
 import {useState} from 'react';
 import FormModal from './FormModal.jsx';
+import SuccessModal from './SuccessModal.jsx';
 
-function AddTask( {cases, setCases}) {
+function AddTask( {setCases}) {
     const [isModalOpen, setIsModalOpen] = useState(false); 
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
     function handleClick() {
         setIsModalOpen(true);
@@ -14,11 +16,12 @@ function AddTask( {cases, setCases}) {
 
         {isModalOpen && 
         <FormModal 
-            isModalOpen={isModalOpen}
             setIsModalOpen={setIsModalOpen}
-            cases={cases}
             setCases={setCases}
+            setIsSuccessModalOpen={setIsSuccessModalOpen}
         />}
+
+        {isSuccessModalOpen && <SuccessModal />}
         </>
     )
 }

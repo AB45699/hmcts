@@ -1,5 +1,6 @@
 .success-modal-content {
     position: absolute;
+    display: flex;
     top:0;
     right: 0;
     margin: 10px;
@@ -10,4 +11,19 @@
     border-style: solid; 
     border-color: rgb(64, 60, 4);
     font-weight: bold;
+    height: 20px;
+}
+
+.close-success-modal {
+    width: 32px;
+    padding: 4px;
+    height: 30px;
+    display: flex;
+    margin-left: 10px;
+    margin-top: -5px;
+    text-align: center;
+    background-color: rgb(168, 168, 168);
+    border-style: solid;
+    border-color: rgb(36, 31, 31);
+    border-radius: 10px;
 }

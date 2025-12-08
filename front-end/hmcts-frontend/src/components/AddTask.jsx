@@ -21,7 +21,7 @@ function AddTask( {setCases}) {
             setIsSuccessModalOpen={setIsSuccessModalOpen}
         />}
 
-        {isSuccessModalOpen && <SuccessModal />}
+        {isSuccessModalOpen && <SuccessModal setIsSuccessModalOpen={setIsSuccessModalOpen}/>}
         </>
     )
 }

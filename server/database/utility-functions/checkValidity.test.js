@@ -4,8 +4,8 @@ describe("checkValidity", ()=>{
     test("returns a boolean", ()=>{
         expect(typeof checkValidity("", "", "", "")).toBe("boolean");  
     });
-    test("for all inputs being valid (i.e. non-empty string), should return true", ()=>{
-        const input = checkValidity("valid case_number", "valid case_title", "valid case_status", "valid due");
+    test("for all inputs being valid (i.e. non-empty string/correct due format), should return true", ()=>{
+        const input = checkValidity("valid case_number", "valid case_title", "valid case_status", "2020-06-06 16:00:00");
         
         expect(input).toBe(true);
     });
@@ -25,9 +25,14 @@ describe("checkValidity", ()=>{
         expect(input).toBe(false);
     })
     test("if some inputs are not valid, should return false", ()=>{
-        const input = checkValidity("valid case_number", [], "", "valid due");
+        const input = checkValidity("valid case_number", [], "", "2020-06-06 16:00:00");
         
         expect(input).toBe(false);
     });
+    test("returns false if due input is invalid (i.e. not YYYY-MM-DD HH:MM:SS", ()=>{
+        const input = checkValidity("valid case_number", "valid case_title", "valid case_status", "2025:12:24 16:45:00");
+
+        expect(input).toBe(false);
+    })
 
 })

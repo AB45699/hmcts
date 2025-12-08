@@ -111,6 +111,14 @@ describe("app", ()=> {
 
                 expect(body.msg).toBe("Bad request");
             });
+            test("should return a 400 status and error message if due column format is invalid (i.e. not YYYY-MM-DD HH:MM:SS)", async ()=>{
+                const invalidDueCase = {...testPostCase, due: "2020:06-02 16:45:00"};
+
+                const {body} = await request(app).post("/api/cases").send(invalidDueCase).expect(400);
+
+                expect(body.msg).toBe("Bad request");
+
+            })
         })
     });
    

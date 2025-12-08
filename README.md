@@ -30,7 +30,7 @@ A full-stack web application that allows users to create new tasks. The page dis
 6. To run the back-end server, run the command: 
     <br>```npm run dev```
     <br> This will start the server on the specified port (localhost:9090)
-7. Navigate to the front-end folder and install the dependencies: 
+7. Open a new terminal window and navigate to the front-end folder and install the dependencies: 
     <br>```cd hmcts/front-end/hmcts-frontend```
     <br>```npm install```
 8. To start the front-end server, run the command: 

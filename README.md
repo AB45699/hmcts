@@ -47,7 +47,7 @@ A full-stack web application that allows users to create new tasks. The page dis
 ## Available endpoints
 The server has two endpoints:
 1. GET ```/api/cases```
-  * This will return all tasks in the database in descending order of case_id (so in order latest inserted tasks). 
+  * This will return all tasks in the database in descending order of case_id (so in order of the latest inserted tasks). 
 
 2. POST ```/api/cases``` 
   * This allows posting of a new task. 

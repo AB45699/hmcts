@@ -35,10 +35,12 @@ body {
 .case-card {
   padding: 10px;
   border-radius: 15px;
+  width: 260px;
   background-color: rgb(186, 210, 200); 
   border-style: solid; 
   border-color: rgb(5, 53, 22);
   border-width: 3px;
+  font-size: 15px;
 }
 
 span {

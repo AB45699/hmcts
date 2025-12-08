@@ -22,6 +22,7 @@ form {
     row-gap: 10px;
     font-weight: bold;
     font-size: 14px;
+   
 }
 
 .close-modal {
@@ -32,4 +33,17 @@ form {
     padding: 5px;
     width: 60px;
     background-color: rgb(125, 175, 204);
+}
+
+.submit-button {
+    border-style: solid; 
+    border-color: rgb(8, 48, 24);
+    border-radius: 15px;
+    font-size: 14px;
+    padding: 5px;
+    width: 60px;
+    background-color: rgb(104, 206, 136);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -66,7 +66,7 @@ function FormModal( {setIsModalOpen, cases, setCases} ) {
                     value={formData.case_title} 
                     onChange={handleChange}/>
                 
-                <label htmlFor="case-desc-input">Description: </label>
+                <label htmlFor="case-desc-input">Description (optional): </label>
                 <input 
                     name="case_description" 
                     id="case-desc-input" 

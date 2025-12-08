@@ -2,9 +2,12 @@ import { createPortal } from 'react-dom';
 import { useState } from 'react';
 import '../modal.css';
 import { postCaseData } from '../../api';
+import checkInputs from '../utility-functions/checkInputs.js';
 
 function FormModal( {setIsModalOpen, setCases, setIsSuccessModalOpen} ) {
     const modalRoot = document.getElementById("modal-root"); 
+    const [errors, setErrors] = useState({});
+
     const [formData, setFormData] = useState({
         case_number: "",
         case_title: "",
@@ -40,8 +43,14 @@ function FormModal( {setIsModalOpen, setCases, setIsSuccessModalOpen} ) {
 
     async function onSubmit(event) {
         event.preventDefault();
-        await postCase(formData);
-        closeModal();
+        const validationErrors = checkInputs(formData);
+        setErrors(validationErrors)
+       
+        if (Object.keys(validationErrors).length === 0) {
+            await postCase(formData);
+            closeModal();
+        }
+        
     };
 
     return createPortal(
@@ -49,7 +58,7 @@ function FormModal( {setIsModalOpen, setCases, setIsSuccessModalOpen} ) {
         <div className="modal-content"> 
             
 
-            <form onSubmit={onSubmit}> 
+            <form handleSubmit={onSubmit}> 
                 <label htmlFor="case-number-input">Case number: </label>
                 <input 
                     name="case_number" 
@@ -58,6 +67,8 @@ function FormModal( {setIsModalOpen, setCases, setIsSuccessModalOpen} ) {
                     value={formData.case_number} 
                     onChange={handleChange}/>
 
+                {errors.case_number && (<p className="error-message">This field cannot be empty</p>)}
+
                 <label htmlFor="case-title-input">Title: </label>
                 <input 
                     name="case_title" 
@@ -65,6 +76,8 @@ function FormModal( {setIsModalOpen, setCases, setIsSuccessModalOpen} ) {
                     type="text" 
                     value={formData.case_title} 
                     onChange={handleChange}/>
+                
+                {errors.case_title && (<p className="error-message">This field cannot be empty</p>)}
                 
                 <label htmlFor="case-desc-input">Description (optional): </label>
                 <input 
@@ -82,6 +95,8 @@ function FormModal( {setIsModalOpen, setCases, setIsSuccessModalOpen} ) {
                     value={formData.case_status} 
                     onChange={handleChange}/>
                 
+                {errors.case_status && (<p className="error-message">This field cannot be empty</p>)}
+
                 <label htmlFor="case-due-input">Due date and time: </label>
                 <input 
                     name="due" 
@@ -90,6 +105,8 @@ function FormModal( {setIsModalOpen, setCases, setIsSuccessModalOpen} ) {
                     placeholder="YYYY-MM-DD HH:MM:SS"
                     value={formData.due} 
                     onChange={handleChange}/>
+
+                {errors.due && (<p className="error-message">Must enter YYYY-MM-DD HH:MM:SS format</p>)}
 
                 <button className="submit-button" type="submit" onClick={onSubmit}>Submit</button>
 

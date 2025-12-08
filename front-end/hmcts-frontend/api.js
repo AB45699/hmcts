@@ -6,8 +6,8 @@ export const fetchAllCases = async () => {
     return allCases
 };
 
-export const postCaseData = async (caseData) => {
-    const {data} = await axios.post("http://localhost:9090/api/cases", caseData);
+export const postCaseData = async (newCaseData) => {
+    const {data} = await axios.post("http://localhost:9090/api/cases", newCaseData);
    
     return data;
 }
